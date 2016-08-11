@@ -13,7 +13,8 @@ RUN \
     ruby-dev=2.3.1-r0 \
     ruby=2.3.1-r0 \
     ghostscript-fonts \
-    graphviz
+    graphviz \
+    zeromq-dev
 
 RUN \
   /usr/bin/gem install -N \
