@@ -1,4 +1,4 @@
-FROM scispike/node:0.31.0
+FROM scispike/node:0.31.1
 
 # NOTE: The image created by this Dockerfile only adds packages that are
 # required for yaktor to run properly.  It does NOT install yaktor itself.
