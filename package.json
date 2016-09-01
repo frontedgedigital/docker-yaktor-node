@@ -1,5 +1,6 @@
 {
   "name": "docker-yaktor-node",
+  "description": "Docker image containing all Yaktor dependencies, enabling developers to create & run a new Yaktor application or onboard to an existing Yaktor application quickly.",
   "private": true,
   "version": "0.40.0-pre.0",
   "license": "Apache-2.0",
