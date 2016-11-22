@@ -8,10 +8,7 @@ Provides a Docker image for [Yaktor](https://yaktor.io) applications built using
 
 ```
 $ mkdir myapp && cd myapp
-$ docker run -it --rm --user node \
-  -v "$PWD":/app --entrypoint bash \
-  yaktor/node:latest -c \
-  'npm install yaktor && $(npm bin)/yaktor init'
+$ curl init.yaktor.io | sh
 $ ./yak gen-src gen-views start
 ```
 
