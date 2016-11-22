@@ -4,6 +4,8 @@
 
 Provides a Docker image for [Yaktor](https://yaktor.io) applications built using [Node.js](http://nodejs.org).
 
+> NOTE: Please report issues at https://github.com/SciSpike/yaktor-issues/issues.
+
 ## tl;dr
 
 ```
