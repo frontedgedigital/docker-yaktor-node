@@ -1,4 +1,35 @@
-FROM scispike/node:0.31.1
+FROM alpine:3.9 as Base
+
+MAINTAINER docker@scispike.com
+
+
+RUN \
+  set -x \
+  && \
+  apk add --no-cache \
+    bash \
+    g++ \
+    git \
+    make \
+    nodejs-lts \
+    python \
+    sudo \
+    sed
+
+RUN adduser -D -u 1000 node
+RUN echo "node ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+USER node
+RUN echo 'export PATH="./node_modules/.bin:$PATH"' >> ~/.profile
+
+USER root
+RUN echo 'export PATH="./node_modules/.bin:$PATH"' >> ~/.profile
+
+VOLUME ["/app"]
+WORKDIR /app
+COPY yaktor.sh /yaktor.sh
+
+FROM Base
 
 # NOTE: The image created by this Dockerfile only adds packages that are
 # required for yaktor to run properly.  It does NOT install yaktor itself.
@@ -10,8 +41,8 @@ RUN \
   && \
   apk add --no-cache \
     openjdk7-jre-base \
-    ruby-dev=2.3.1-r0 \
-    ruby=2.3.1-r0 \
+    ruby-dev\
+    ruby \
     ghostscript-fonts \
     graphviz \
     zeromq-dev
@@ -24,5 +55,5 @@ RUN \
 VOLUME ["/app"]
 WORKDIR /app
 
-COPY yaktor.sh /yaktor.sh
+COPY --from=Base yaktor.sh /yaktor.sh
 ENTRYPOINT ["/yaktor.sh"]
